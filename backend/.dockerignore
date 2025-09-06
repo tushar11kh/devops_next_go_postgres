@@ -1,0 +1,17 @@
+# Go build output
+server
+*.exe
+*.out
+*.log
+
+# Dependencies (we use go.mod/go.sum)
+vendor/
+.gopath
+
+# OS / IDE files
+.DS_Store
+.vscode
+.idea
+
+# Logs
+*.log

@@ -1,0 +1,18 @@
+# Node dependencies (we'll install them in Docker)
+node_modules
+npm-debug.log
+yarn-error.log
+.pnp.*
+.vscode
+.idea
+
+# Build output (will be rebuilt inside Docker)
+.next
+dist
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
