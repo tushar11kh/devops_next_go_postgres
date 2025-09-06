@@ -71,14 +71,14 @@ All three components are containerized with Docker.
 ### Port Mappings
 - **Frontend (React)** runs on port **3000** inside the container.  
   Mapped to host: `localhost:3000`.  
-- **Backend (Node.js)** runs on port **5000** inside the container.  
-  Mapped to host: `localhost:5000`.  
+- **Backend (Node.js)** runs on port **8080** inside the container.  
+  Mapped to host: `localhost:8080`.  
 - **Postgres** runs on port **5432** inside the container.  
   Mapped to host: `localhost:5432`.
 
 ### Communication Flow
 - **Frontend → Backend**:  
-  API requests from React (`localhost:3000`) are forwarded to the backend container on port `5000`.  
+  API requests from React (`localhost:3000`) are forwarded to the backend container on port `8080`.  
 - **Backend → Database**:  
   Node.js connects to Postgres on port `5432` using container DNS (e.g., `postgres:5432`).  
 - **Host → Containers**:  
@@ -91,10 +91,15 @@ All three components are containerized with Docker.
 ```mermaid
 flowchart LR
     User[User Browser] -->|HTTP:3000| Frontend[React Container]
-    Frontend -->|API Calls:5000| Backend[Node.js Container]
+    Frontend -->|API Calls:8080| Backend[Node.js Container]
     Backend -->|DB Queries:5432| Database[(Postgres Container)]
+```
 
+## 🖼️ Docker Build Workflow
+
+```mermaid
 graph TD
     A[Single-Stage Build] -->|Large Image| B[Multi-Stage Build]
     B -->|Smaller, Cleaner| C[Distroless Image]
     C -->|Final Output| D[Production-Ready Container]
+```
